@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:foody/utils/colors.dart';
 
-import 'homepage.dart';
+import 'home/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
           //
           // This works for code too, not just values: Most code changes can be
           // tested with just a hot reload.
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: AppColors.mainColor),
           useMaterial3: true,
         ),
         home: MyHomePage());
