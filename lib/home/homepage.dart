@@ -3,6 +3,7 @@ import 'package:foody/home/foodPageBody.dart';
 import 'package:foody/utils/colors.dart';
 import 'package:foody/widgets/bigtext.dart';
 import 'package:foody/widgets/smallText.dart';
+import 'package:gap/gap.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -13,12 +14,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-              height: 80,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Gap(5),
+            Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                height: 65,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,10 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         onPressed: () {},
                         icon: const Icon(Icons.search))
                   ],
-                ),
-              )),
-          foodPageBody()
-        ],
+                )),
+            foodPageBody()
+          ],
+        ),
       ),
     );
   }
