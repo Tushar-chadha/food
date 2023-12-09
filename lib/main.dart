@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foody/utils/colors.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
-import 'home/homepage.dart';
+import 'screens/home/homepage.dart';
 
 void main() {
   runApp(const MyApp());
