@@ -10,6 +10,7 @@ class dimensions {
   static double height15 = screenHeight / 56.27;
   static double height30 = screenHeight / 28.13;
   static double height65 = screenHeight / 12.99;
+  static double height300 = screenHeight / (844 / 300);
   static double screenHeight = Get.context!.height;
 // dynamic width
   static double screenWidth = Get.context!.width;
@@ -19,10 +20,14 @@ class dimensions {
   static double width30 = screenHeight / 28.13;
 
   static double font20 = screenHeight / 42.2;
+  static double font26 = screenHeight / (844 / 26);
   static double radius30 = screenHeight / 28.13;
   static double radius20 = screenHeight / 42.2;
+  static double appIcon16 = screenHeight / (844 / 16);
 
   // dynamic listView Sizes
   static double listImgSize = screenWidth / 3.24;
   static double listTextCont = screenWidth / 3.9;
+  //POPULARIMAGE
+  static double popularImageHeight = screenHeight / (844 / 350);
 }

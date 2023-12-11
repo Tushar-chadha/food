@@ -3,7 +3,7 @@ import 'package:foody/utils/colors.dart';
 
 class smallText extends StatelessWidget {
   final String text;
-  final double size;
+  final double size, height;
   final TextOverflow to;
   final Color? color;
   final FontWeight fo;
@@ -14,12 +14,14 @@ class smallText extends StatelessWidget {
       this.size = 12,
       this.to = TextOverflow.ellipsis,
       this.color = AppColors.textColor,
-      this.fo = FontWeight.w400});
+      this.fo = FontWeight.w400,
+      this.height = 1.1});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Text(text,
         style: TextStyle(
+            height: height,
             fontFamily: 'Roboto',
             fontSize: size,
             color: color,
