@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foody/helper/dependencies.dart';
 import 'package:foody/screens/food/popularScreenDetails.dart';
 import 'package:foody/screens/food/recomendedFood.dart';
 import 'package:foody/utils/colors.dart';
@@ -6,7 +7,10 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'screens/home/homepage.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding
+      .ensureInitialized(); // waits till dependencies are loaded
+  await dep().init;
   runApp(const MyApp());
 }
 
