@@ -6,7 +6,9 @@ import 'package:get/get.dart';
 class dep {
   Future<void> init() async {
     //API CLient
-    Get.lazyPut(() => ApiClient(appBaseUrl: "www.dbestech.com"));
+    Get.lazyPut(() => ApiClient(
+        appBaseUrl:
+            "https://mvs.bslmeiyu.com")); // sends base url to api clinet
     //Repos
     Get.lazyPut(() => popularProductRepo(apiClient: Get.find()));
     //Controllers

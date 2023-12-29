@@ -1,4 +1,5 @@
 import 'package:foody/helper/data/repository/popularProductRepo.dart';
+import 'package:foody/model/popularProductModel.dart';
 import 'package:get/get.dart';
 
 class popularProductController extends GetxController {
@@ -13,7 +14,9 @@ class popularProductController extends GetxController {
     Response response = await productRepo.getPopularProductList();
     if (response.statusCode == 200) {
       _popularproduct = [];
-      //_popularproduct.addAll();
+      _popularproduct.addAll(Products.fromJson(response.body)
+          .products); // added all the data from api client
+      print(_popularproduct);
       update();
     } else {}
   }

@@ -4,6 +4,7 @@ import 'package:foody/utils/colors.dart';
 import 'package:foody/utils/dimensions.dart';
 
 class appIcon extends StatelessWidget {
+  // for app Icon
   final double size;
   final IconData iconName;
   final Color bgColor, iconColor;
