@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:foody/controllers/popularProductController.dart';
 import 'package:foody/utils/colors.dart';
 import 'package:foody/utils/dimensions.dart';
 import 'package:foody/widgets/bigtext.dart';
@@ -7,6 +8,7 @@ import 'package:foody/widgets/buildPageitem.dart';
 import 'package:foody/widgets/customFoodTile.dart';
 import 'package:foody/widgets/smallText.dart';
 import 'package:gap/gap.dart';
+import 'package:get/state_manager.dart';
 
 // ignore: camel_case_types
 class foodPageBody extends StatefulWidget {
@@ -47,34 +49,44 @@ class _foodPageBodyState extends State<foodPageBody> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         //page crousel starting
-        Container(
-          //color: Colors.red,
-          height: dimensions.pageview,
-          child: PageView.builder(
-            controller: pageCon,
-            itemCount: 5,
-            itemBuilder: (BuildContext context, int index) {
-              return buildPageItem(
-                currPageVal: _currPageVal,
-                scaleFactor: _scaleFactor,
-                height: _height,
-                index: index,
-              );
-            },
-          ),
-        ),
-        DotsIndicator(
-          dotsCount: 5,
-          position: _currPageVal.toInt(),
-          decorator: DotsDecorator(
-            color: AppColors.yellowColor, // Inactive color
-            activeColor: AppColors.mainColor,
-            size: const Size.square(9.0),
-            activeSize: const Size(18.0, 9.0),
-            activeShape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
-          ),
-        ), //page crousel ending
+        GetBuilder<popularProductController>(builder: (popularProductsss) {
+          return Column(
+            children: [
+              Container(
+                //color: Colors.red,
+                height: dimensions.pageview,
+                child: PageView.builder(
+                  controller: pageCon,
+                  itemCount: popularProductsss.popularproduct.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return buildPageItem(
+                      currPageVal: _currPageVal,
+                      scaleFactor: _scaleFactor,
+                      height: _height,
+                      index: index,
+                      porductModel: popularProductsss.popularproduct[index],
+                    );
+                  },
+                ),
+              ),
+              DotsIndicator(
+                dotsCount: popularProductsss.popularproduct.length <= 0
+                    ? 1
+                    : popularProductsss.popularproduct.length,
+                position: _currPageVal.toInt(),
+                decorator: DotsDecorator(
+                  color: AppColors.yellowColor, // Inactive color
+                  activeColor: AppColors.mainColor,
+                  size: const Size.square(9.0),
+                  activeSize: const Size(18.0, 9.0),
+                  activeShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
+                ),
+              ),
+            ],
+          );
+        }),
+        //page crousel ending
         Gap(dimensions.height30),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: dimensions.width20),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:foody/model/popularProductModel.dart';
 import 'package:foody/utils/colors.dart';
+import 'package:foody/utils/constants.dart';
 import 'package:foody/utils/dimensions.dart';
 import 'package:foody/widgets/bigtext.dart';
 import 'package:foody/widgets/iconText.dart';
@@ -11,16 +13,19 @@ class buildPageItem extends StatelessWidget {
   final double scaleFactor;
   final double height;
   final int index;
+  final productModel porductModel;
 
   const buildPageItem(
       {super.key,
       required this.currPageVal,
       required this.scaleFactor,
       required this.height,
-      required this.index});
+      required this.index,
+      required this.porductModel});
 
   @override
   Widget build(BuildContext context) {
+    String popularProductItem = "${constants.baseUrl}/uploads/";
     Matrix4 matrix = Matrix4.identity();
 
     if (index == currPageVal.floor()) {
@@ -56,8 +61,9 @@ class buildPageItem extends StatelessWidget {
             height: height,
             margin: EdgeInsets.symmetric(horizontal: dimensions.width10),
             decoration: BoxDecoration(
-                image: const DecorationImage(
-                  image: AssetImage("assets/image/food0.png"),
+                image: DecorationImage(
+                  image:
+                      NetworkImage("${popularProductItem}${porductModel.img!}"),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(dimensions.radius30)),
@@ -89,7 +95,7 @@ class buildPageItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const BigText(text: "Chinese Food"),
+                    BigText(text: porductModel.name!),
                     Row(children: [
                       Wrap(
                         children: List.generate(

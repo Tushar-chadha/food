@@ -1,4 +1,5 @@
 import 'package:foody/helper/data/apiClient.dart';
+import 'package:foody/utils/constants.dart';
 import 'package:get/get.dart';
 
 class popularProductRepo extends GetxService {
@@ -7,6 +8,7 @@ class popularProductRepo extends GetxService {
   popularProductRepo({required ApiClient apiClient}) : _apiClient = apiClient;
 
   Future<Response> getPopularProductList() async {
-    return await _apiClient.getData("/api/v1/products/popular");
+    print("api");
+    return await _apiClient.getData(constants.popularProductURI);
   }
 }
