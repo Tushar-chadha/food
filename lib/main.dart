@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foody/controllers/popularProductController.dart';
+import 'package:foody/controllers/recomendedProductController.dart';
 import 'package:foody/helper/data/apiClient.dart';
 import 'package:foody/helper/data/repository/popularProductRepo.dart';
 import 'package:foody/helper/dependencies.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
     // Get.lazyPut(() => ApiClient(appBaseUrl: constants.baseUrl));
     // Get.lazyPut(() => popularProductRepo(apiClient: Get.find()));
     // Get.lazyPut(() => popularProductController(productRepo: Get.find()));
+    Get.find<recommendedProductController>().getRecommendedProductList();
     Get.find<popularProductController>()
         .getPopularProductList(); // getx finds new list using controller
     return GetMaterialApp(

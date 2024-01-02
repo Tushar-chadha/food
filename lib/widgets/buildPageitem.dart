@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foody/model/popularProductModel.dart';
+import 'package:foody/model/productModel.dart';
 import 'package:foody/utils/colors.dart';
 import 'package:foody/utils/constants.dart';
 import 'package:foody/utils/dimensions.dart';
@@ -62,8 +62,8 @@ class buildPageItem extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: dimensions.width10),
             decoration: BoxDecoration(
                 image: DecorationImage(
-                  image:
-                      NetworkImage("${popularProductItem}${porductModel.img!}"),
+                  image: NetworkImage(
+                      "${constants.baseUrl}/uploads/${porductModel.img!}"),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(dimensions.radius30)),
@@ -99,7 +99,7 @@ class buildPageItem extends StatelessWidget {
                     Row(children: [
                       Wrap(
                         children: List.generate(
-                            5,
+                            porductModel.stars!,
                             (index) => Icon(
                                   Icons.star,
                                   color: AppColors.mainColor,

@@ -52,23 +52,25 @@ class _foodPageBodyState extends State<foodPageBody> {
         GetBuilder<popularProductController>(builder: (popularProductsss) {
           return Column(
             children: [
-              Container(
-                //color: Colors.red,
-                height: dimensions.pageview,
-                child: PageView.builder(
-                  controller: pageCon,
-                  itemCount: popularProductsss.popularproduct.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return buildPageItem(
-                      currPageVal: _currPageVal,
-                      scaleFactor: _scaleFactor,
-                      height: _height,
-                      index: index,
-                      porductModel: popularProductsss.popularproduct[index],
-                    );
-                  },
-                ),
-              ),
+              popularProductsss.isLoaded
+                  ? Container(
+                      height: dimensions.pageview,
+                      child: PageView.builder(
+                        controller: pageCon,
+                        itemCount: popularProductsss.popularproduct.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return buildPageItem(
+                            currPageVal: _currPageVal,
+                            scaleFactor: _scaleFactor,
+                            height: _height,
+                            index: index,
+                            porductModel:
+                                popularProductsss.popularproduct[index],
+                          );
+                        },
+                      ),
+                    )
+                  : CircularProgressIndicator(),
               DotsIndicator(
                 dotsCount: popularProductsss.popularproduct.length <= 0
                     ? 1
