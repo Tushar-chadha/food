@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:foody/controllers/popularProductController.dart';
 import 'package:foody/controllers/recomendedProductController.dart';
-import 'package:foody/helper/data/apiClient.dart';
-import 'package:foody/helper/data/repository/popularProductRepo.dart';
 import 'package:foody/helper/dependencies.dart';
-import 'package:foody/screens/food/recomendedFood.dart';
-import 'package:foody/screens/home/foodPageBody.dart';
+import 'package:foody/helper/routes/routeHelper.dart';
 import 'package:foody/screens/home/homepage.dart';
 import 'package:foody/utils/colors.dart';
-import 'package:foody/utils/constants.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async {
@@ -31,6 +27,8 @@ class MyApp extends StatelessWidget {
     Get.find<popularProductController>()
         .getPopularProductList(); // getx finds new list using controller
     return GetMaterialApp(
+        getPages: routeHelper.routes,
+        initialRoute: routeHelper.getInitial(),
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(

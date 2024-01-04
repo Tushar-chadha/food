@@ -7,11 +7,8 @@ class NavigatorRowIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        appIcon(
-          iconName: CupertinoIcons.arrow_left,
-        ),
         appIcon(
           iconName: CupertinoIcons.shopping_cart,
         ),

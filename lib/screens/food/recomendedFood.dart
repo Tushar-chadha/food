@@ -39,16 +39,14 @@ class recomendedFood extends StatelessWidget {
                     color: AppColors.mainColor,
                     borderRadius:
                         BorderRadius.circular(dimensions.radius20 + 5)),
-                child: Container(
-                  child: IconButton(
-                    color: Colors.white,
-                    iconSize: dimensions.height20 + 5,
-                    icon: const Icon(CupertinoIcons.add),
-                    onPressed: () {},
-                  ),
+                child: IconButton(
+                  color: Colors.white,
+                  iconSize: dimensions.height20 + 5,
+                  icon: const Icon(CupertinoIcons.add),
+                  onPressed: () {},
                 ),
               ),
-              BigText(text: "Rs.100" + " X " + "0"),
+              const BigText(text: "Rs.100" + " X " + "0"),
               Container(
                 decoration: BoxDecoration(
                     color: AppColors.mainColor,
@@ -64,7 +62,7 @@ class recomendedFood extends StatelessWidget {
                 ),
               ),
             ]),
-            Gap(10),
+            const Gap(10),
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -101,52 +99,48 @@ class recomendedFood extends StatelessWidget {
           ],
         ),
       ),
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            title: NavigatorRowIcon(),
-            bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(40),
-              child: Container(
-                alignment: Alignment.bottomCenter,
-                width: double.maxFinite,
-                padding: EdgeInsets.only(top: dimensions.height15),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(dimensions.radius20),
-                      topRight: Radius.circular(dimensions.radius20)),
+      body: SafeArea(
+        top: false,
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              title: NavigatorRowIcon(),
+              bottom: PreferredSize(
+                preferredSize: const Size.fromHeight(40),
+                child: Container(
+                  alignment: Alignment.bottomCenter,
+                  width: double.maxFinite,
+                  padding: EdgeInsets.only(top: dimensions.height15),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(dimensions.radius20),
+                        topRight: Radius.circular(dimensions.radius20)),
+                  ),
+                  child: BigText(
+                      size: dimensions.height20,
+                      text: "My food is my Food",
+                      fo: FontWeight.w700),
                 ),
-                child: BigText(
-                    size: dimensions.height20,
-                    text: "My food is my Food",
-                    fo: FontWeight.w700),
+              ),
+              pinned: true,
+              backgroundColor: const Color.fromRGBO(255, 211, 92, 1),
+              expandedHeight: dimensions.height300,
+              flexibleSpace: const FlexibleSpaceBar(
+                background: Image(
+                    image: AssetImage("assets/image/food0.png"),
+                    fit: BoxFit.cover),
               ),
             ),
-            pinned: true,
-            backgroundColor: const Color.fromRGBO(255, 211, 92, 1),
-            expandedHeight: dimensions.height300,
-            flexibleSpace: const FlexibleSpaceBar(
-              background: Image(
-                  image: AssetImage("assets/image/food0.png"),
-                  fit: BoxFit.cover),
-            ),
-          ),
-          SliverToBoxAdapter(
-              child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: dimensions.width20,
-                      vertical: dimensions.height20 + 10),
-                  child: extendableText(
-                    Text: popularFoodDetails().Textx +
-                        popularFoodDetails().Textx +
-                        popularFoodDetails().Textx +
-                        popularFoodDetails().Textx +
-                        popularFoodDetails().Textx +
-                        popularFoodDetails().Textx +
-                        popularFoodDetails().Textx,
-                  ))),
-        ],
+            SliverToBoxAdapter(
+                child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: dimensions.width20,
+                        vertical: dimensions.height20 + 10),
+                    child: const extendableText(
+                        Text: " popularFoodDetails().Textx "))),
+          ],
+        ),
       ),
     );
   }

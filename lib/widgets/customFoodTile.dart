@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:foody/controllers/popularProductController.dart';
 import 'package:foody/controllers/recomendedProductController.dart';
+import 'package:foody/helper/routes/routeHelper.dart';
 import 'package:foody/model/productModel.dart';
-import 'package:foody/model/productModel.dart';
-import 'package:foody/model/productModel.dart';
+import 'package:foody/screens/food/recomendedFood.dart';
 import 'package:foody/utils/colors.dart';
 import 'package:foody/utils/constants.dart';
 import 'package:foody/utils/dimensions.dart';
@@ -23,9 +22,9 @@ class customFoodList extends StatelessWidget {
           itemCount: popularProducts.recomendedProduct.length, //here
           itemBuilder: (context, index) {
             return GestureDetector(
-                onTap: () {
-                  print("Food");
-                },
+                behavior: HitTestBehavior.translucent,
+                onTap: () =>
+                    Get.toNamed(routeHelper.recommendedFoodDetailsRoute),
                 child: CustomListItem(
                   popularProductItem:
                       popularProducts.recomendedProduct[index], //here
@@ -86,27 +85,30 @@ class CustomListItem extends StatelessWidget {
                       text: popularProductItem.name!,
                       fo: FontWeight.w700,
                     ),
-                    Gap(dimensions.height10 - 9),
+                    Gap(dimensions.height10 - 7),
                     smallText(
                       text: popularProductItem.description!,
                     ),
-                    Gap(dimensions.height10 - 5),
+                    Gap(dimensions.height10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const iconText(
+                        iconText(
+                          size: dimensions.height15,
                           color: Colors.amber,
                           icons: Icons.circle,
                           title: "Normal",
                         ),
-                        Gap(dimensions.width10),
-                        const iconText(
+                        Gap(dimensions.width10 - 5),
+                        iconText(
+                          size: dimensions.height15,
                           color: AppColors.mainColor,
                           icons: Icons.location_on,
                           title: "1.7 kms",
                         ),
-                        Gap(dimensions.width10),
+                        Gap(dimensions.width10 - 5),
                         iconText(
+                          size: dimensions.height15,
                           color: Colors.red.shade600,
                           icons: Icons.access_time_outlined,
                           title: "32 mins",

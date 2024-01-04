@@ -1,24 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:foody/helper/routes/routeHelper.dart';
+import 'package:foody/model/productModel.dart';
+import 'package:foody/screens/home/homepage.dart';
 import 'package:foody/utils/colors.dart';
 import 'package:foody/utils/dimensions.dart';
 import 'package:foody/widgets/appIcon.dart';
 import 'package:foody/widgets/bigtext.dart';
 import 'package:foody/widgets/extendableText.dart';
-import 'package:foody/widgets/iconText.dart';
 import 'package:foody/widgets/infoColumn.dart';
-import 'package:foody/widgets/navigatorRow.dart';
-import 'package:foody/widgets/smallText.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class popularFoodDetails extends StatefulWidget {
-  String Textx =
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem ";
   @override
   State<popularFoodDetails> createState() => _popularFoodDetailsState();
 }
 
 class _popularFoodDetailsState extends State<popularFoodDetails> {
+  String Textx =
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem ";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,10 +43,24 @@ class _popularFoodDetailsState extends State<popularFoodDetails> {
             ),
           ),
           Positioned(
-              left: dimensions.width20,
-              top: dimensions.height20 + 30,
-              right: dimensions.width20,
-              child: NavigatorRowIcon()),
+            left: dimensions.width20,
+            top: dimensions.height20 + 30,
+            right: dimensions.width20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () => Get.toNamed(routeHelper.getInitial()),
+                  child: const appIcon(
+                    iconName: CupertinoIcons.arrow_left,
+                  ),
+                ),
+                const appIcon(
+                  iconName: CupertinoIcons.shopping_cart,
+                ),
+              ],
+            ),
+          ),
           Positioned(
             left: 0,
             right: 0,
@@ -77,13 +93,13 @@ class _popularFoodDetailsState extends State<popularFoodDetails> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    appColumn(
+                    const appColumn(
                       text1: "Chinese Food",
                     ),
                     Expanded(
                       child: SingleChildScrollView(
                         child: extendableText(
-                          Text: widget.Textx + widget.Textx + widget.Textx,
+                          Text: Textx + Textx + Textx,
                         ),
                       ),
                     ),

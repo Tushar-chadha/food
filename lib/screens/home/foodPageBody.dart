@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:foody/controllers/popularProductController.dart';
+import 'package:foody/helper/routes/routeHelper.dart';
 import 'package:foody/utils/colors.dart';
 import 'package:foody/utils/dimensions.dart';
 import 'package:foody/widgets/bigtext.dart';
@@ -8,7 +9,7 @@ import 'package:foody/widgets/buildPageitem.dart';
 import 'package:foody/widgets/customFoodTile.dart';
 import 'package:foody/widgets/smallText.dart';
 import 'package:gap/gap.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 
 // ignore: camel_case_types
 class foodPageBody extends StatefulWidget {
@@ -59,18 +60,22 @@ class _foodPageBodyState extends State<foodPageBody> {
                         controller: pageCon,
                         itemCount: popularProductsss.popularproduct.length,
                         itemBuilder: (BuildContext context, int index) {
-                          return buildPageItem(
-                            currPageVal: _currPageVal,
-                            scaleFactor: _scaleFactor,
-                            height: _height,
-                            index: index,
-                            porductModel:
-                                popularProductsss.popularproduct[index],
+                          return GestureDetector(
+                            onTap: () => Get.toNamed(
+                                routeHelper.popularFoodDetailsRoute),
+                            child: buildPageItem(
+                              currPageVal: _currPageVal,
+                              scaleFactor: _scaleFactor,
+                              height: _height,
+                              index: index,
+                              porductModel:
+                                  popularProductsss.popularproduct[index],
+                            ),
                           );
                         },
                       ),
                     )
-                  : CircularProgressIndicator(),
+                  : const CircularProgressIndicator(),
               DotsIndicator(
                 dotsCount: popularProductsss.popularproduct.length <= 0
                     ? 1
